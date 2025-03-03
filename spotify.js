@@ -3,7 +3,7 @@ let Currfolder;
 let songs;
 async function getsongs(folder) {
   Currfolder = folder;
-  let a = await fetch(`http://127.0.0.1:5500/spotify/${Currfolder}/`);
+  let a = await fetch(`http://127.0.0.1:5501/spotify/${Currfolder}/`);
   let response = await a.text();
   let div = document.createElement("div");
   div.innerHTML = response;
