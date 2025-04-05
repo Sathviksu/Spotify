@@ -3,7 +3,7 @@ let Currfolder;
 let songs;
 async function getsongs(folder) {
   Currfolder = folder;
-  let a = await fetch(`/spotify/${Currfolder}/`);
+  let a = await fetch(`./spotify/${Currfolder}/`);
   let response = await a.text();
   let div = document.createElement("div");
   div.innerHTML = response;
@@ -55,7 +55,7 @@ async function getsongs(folder) {
   }
 }
 const playsong = (track, pause = false) => {
-  currentsongs.src = `/spotify/${Currfolder}/` + track;
+  currentsongs.src = `./spotify/${Currfolder}/` + track;
   if (!pause) {
     currentsongs.play();
     playStop.src = "pause.svg";
@@ -80,7 +80,7 @@ function convertSecondsToMinutes(seconds) {
 let cardContainer = document.querySelector(".playlist");
 
 async function popplaylists() {
-  let a = await fetch(`/spotify/songs/`);
+  let a = await fetch(`./spotify/songs/`);
   let response = await a.text();
   let div = document.createElement("div");
   div.innerHTML = response;
@@ -93,7 +93,7 @@ async function popplaylists() {
     if (e.href.includes("/songs/")) {
       let folder = e.href.split("/songs/").slice(-1)[0];
       let a = await fetch(
-        `/spotify/songs/${folder}/info.json`
+        `./spotify/songs/${folder}/info.json`
       );
       let response = await a.json();
 
@@ -102,7 +102,7 @@ async function popplaylists() {
         `
         <div data-folder="${folder}" class="playlists border-radius">
     <div class="img">
-        <img class="image" src="/spotify/songs/${folder}/photo.jpeg">
+        <img class="image" src="./spotify/songs/${folder}/photo.jpeg">
         <div class="play-button">
             <div class="circle" >
                 <div class="play"></div>
