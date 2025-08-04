@@ -1,0 +1,7 @@
+[build]
+  publish = "."   # because index.html is in the root
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

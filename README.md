@@ -1,6 +1,6 @@
-🎵 Spotify Clone – Full-Stack Music Streaming App 🎵
+🎵 spotify Clone – Full-Stack Music Streaming App 🎵
 
-🚀 A modern, fully responsive music streaming web app inspired by Spotify. This app allows users to browse, play, and manage their favorite songs, featuring a sleek UI and powerful functionalities.
+🚀 A modern, fully responsive music streaming web app inspired by spotify. This app allows users to browse, play, and manage their favorite songs, featuring a sleek UI and powerful functionalities.
 
 🔥 Features
 ✅ User Authentication – Secure login/signup with Firebase/Auth0
