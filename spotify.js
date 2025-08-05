@@ -3,18 +3,8 @@ let Currfolder;
 let songs;
 async function getsongs(folder) {
   Currfolder = folder;
-  let a = await fetch(`./${Currfolder}/`);
-  let response = await a.text();
-  let div = document.createElement("div");
-  div.innerHTML = response;
-  let names = div.getElementsByTagName("a");
-  songs = [];
-  for (let i = 0; i < names.length; i++) {
-    const element = names[i];
-    if (element.href.endsWith(".mp3")) {
-      songs.push(element.href.split(`/${folder}/`)[1]);
-    }
-  }
+  let a = await fetch(`./${Currfolder}/songs.json`);
+  songs = await a.json();
   let songsul = document
     .querySelector(".songlist")
     .getElementsByTagName("ul")[0];
@@ -81,6 +71,9 @@ let cardContainer = document.querySelector(".playlist");
 
 async function popplaylists() {
   let a = await fetch(`./songs/`);
+  if (!a.ok) {
+    return;
+  }
   let response = await a.text();
   let div = document.createElement("div");
   div.innerHTML = response;
@@ -127,7 +120,9 @@ async function popplaylists() {
 
 async function main() {
   await getsongs("songs/first");
-  playsong(songs[0], true);
+  if (songs.length > 0) {
+    playsong(songs[0], true);
+  }
 
   popplaylists();
 
