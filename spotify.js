@@ -157,4 +157,11 @@ async function main() {
     currentsongs.volume = e.target.value / 100;
   });
 }
-main();
+
+  document.querySelector(".hamburger").addEventListener("click", () => {
+    document.querySelector(".left").style.left = "0";
+  });
+
+  document.querySelector(".close").addEventListener("click", () => {
+    document.querySelector(".left").style.left = "-100%";
+  });
