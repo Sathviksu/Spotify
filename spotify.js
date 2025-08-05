@@ -70,21 +70,9 @@ function convertSecondsToMinutes(seconds) {
 let cardContainer = document.querySelector(".playlist");
 
 async function popplaylists() {
-  let a = await fetch(`./songs/`);
-  if (!a.ok) {
-    return;
-  }
-  let response = await a.text();
-  let div = document.createElement("div");
-  div.innerHTML = response;
-  let anchor = div.getElementsByTagName("a");
+  let folders = ["first", "second", "third", "forth", "fifth", "sixth", "seventh", "eighth", "ninth", "tenth"];
 
-  let array = Array.from(anchor);
-  for (let index = 0; index < array.length; index++) {
-    const e = array[index];
-
-    if (e.href.includes("/songs/")) {
-      let folder = e.href.split("/songs/").slice(-1)[0];
+  for (const folder of folders) {
       let a = await fetch(
         `./songs/${folder}/info.json`
       );
@@ -109,7 +97,6 @@ async function popplaylists() {
         <p class="discription">${response.description}</p>
     </div>
 </div>`;
-    }
   }
   Array.from(document.getElementsByClassName("playlists")).forEach((e) => {
     e.addEventListener("click", async (item) => {
